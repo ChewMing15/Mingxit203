@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+
+    Enter: <input id='input' type='text' placeholder="insert ticker code (AAPL)" autocomplete="off"></input>
+    <button id='submit' type='button'>Submit</button>
+
+    type something here: <span id='test'></span>
+    <br>
+
+    <script>
+        
+        document.getElementById('submit').addEventListener('click', () => {
+            var input_text = document.getElementById('input').value;       
+            datafromweb(input_text);    
+        })
+
+        async function datafromweb(input_text) {
+            const userinput = input_text;
+            
+            // const sendinput = await fetch(`/url/${userinput}`);
+            const numbers = await fetch(`/hello/${userinput}`);
+            const num = await numbers.json();
+
+            var txt = [];
+
+            for (x=0; x<18; x++) {
+                txt[x] = num.title[x];
+            }
+
+            const a = document.createElement('table');
+            document.body.append(a);
+
+            const b = document.querySelector('table').setAttribute('id', 'tabletable');
+            const c = document.getElementById('tabletable');
+
+            for (i=0; i<18; i++) {
+                
+                var row = c.insertRow();
+
+                for (j=0; j<4; j++) {
+                    
+                    if (j==0) {
+                        row.insertCell().innerHTML = txt[i];
+                    }
+
+                    var eachbody = num.body[i][j];
+                    row.insertCell().innerHTML = eachbody;
+                }
+                
+            }
+
+        }
+    </script>
+</body>
+</html>
