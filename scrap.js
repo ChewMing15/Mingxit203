@@ -16,10 +16,6 @@ datafunction();
 
 async function datafunction() {
 
-    // app.get(`/url/:userinput`, (request, response) => {
-    //     const userinput = request.params.userinput;
-    //     console.log(userinput);
-    // });
     app.get(`/hello/:userinput`, async (request, response) => {
 
         var input = request.params.userinput;
