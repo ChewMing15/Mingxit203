@@ -1,0 +1,21 @@
+.tablecolor {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.tablecolor td, .tablecolor th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+.tablecolor tbody td {
+  font-size: 13px;
+}
+.tablecolor tr:nth-child(even) {
+  background: #D0E4F5;
+}
+
+.tablecolor tr:first-child {
+  background: red;
+}

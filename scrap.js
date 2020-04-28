@@ -22,7 +22,7 @@ async function datafunction() {
 
         const url_fix = 'https://finance.yahoo.com/quote/CMOU.SI/financials?p=CMOU.SI'
         const url = 'https://finance.yahoo.com/quote/' + input + '/financials?p=' + input
-        console.log(url);
+        //console.log(url);
 
         const get_data = await fetch(url);
         const term_response = await get_data.text();
@@ -31,6 +31,7 @@ async function datafunction() {
 
         const title = [];
         var body = new Array(18);
+        var header = new Array(4);
 
         for (j=0; j<18; j++) {
             body[j] = new Array(4)
@@ -47,15 +48,20 @@ async function datafunction() {
 
         });
 
+        for (i=0; i<5; i++) {
+            header[i] = $('.D\\(tbhg\\)').children().children().eq(i).text();
+            //console.log('@' + i + ' header:' + header[i])
+        }
+
         let table = {
             title,
-            body
+            body,
+            header
         }
         
+        //console.log('done');
         console.log(table);
         
-        
-            
         response.json(table);
         
     });
