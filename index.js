@@ -26,11 +26,9 @@ async function datafunction() {
         const term_response = await get_data.text();
 
         const $ = cheerio.load(term_response);
-        const $2 = cheerio.load(term_response2);
-
+        
         var totalRow = 0;
-        var totalRow2 = 0;
-
+        
         $('.rw-expnded').each((i, element) => {
             totalRow = i
             return totalRow
