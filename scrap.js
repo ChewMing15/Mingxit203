@@ -20,20 +20,22 @@ async function datafunction() {
 
         var input = request.params.userinput;
 
-        const url_fix = 'https://finance.yahoo.com/quote/CMOU.SI/financials?p=CMOU.SI'
-        const url = 'https://finance.yahoo.com/quote/' + input + '/financials?p=' + input
-        //console.log(url);
+        const url = 'https://finance.yahoo.com/quote/' + input + '/financials?p=' + input;
 
         const get_data = await fetch(url);
         const term_response = await get_data.text();
 
         const $ = cheerio.load(term_response);
-        
+        const $2 = cheerio.load(term_response2);
+
         var totalRow = 0;
+        var totalRow2 = 0;
+
         $('.rw-expnded').each((i, element) => {
             totalRow = i
             return totalRow
         });
+
 
         //console.log(totalRow);
 

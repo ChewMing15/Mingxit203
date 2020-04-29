@@ -22,9 +22,11 @@ async function datafromweb(input_text) {
     const numbers = await fetch(`/hello/${userinput}`);
     const num = await numbers.json();
     
+    // Income Statement
     document.getElementById('span_type').textContent = num.what;
     document.getElementById('unit').textContent = num.inUnit;
     document.getElementById('thewhat').classList.add('thewhat');
+
     var txt = [];
 
     for (x=0; x<num.totalRow+1; x++) {
