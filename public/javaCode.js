@@ -1,13 +1,14 @@
 document.getElementById('clear').addEventListener('click', () => {
     var delete_table = document.getElementById('tabletable')
     var delete_download = document.getElementById('downloadButton');
-
+    var delete_thewhat = document.getElementById('thewhat');
 //    while (delete_table.firstChild) {
 //        delete_table.removeChild(delete_table.firstChild);
 //    }
     delete_table.remove(".delete_table");
     delete_download.remove(".downloadButton");
-
+    //delete_thewhat.remove('.delete_thewhat');
+    
 });
 
 document.getElementById('submit').addEventListener('click', async () => {
@@ -21,9 +22,12 @@ async function datafromweb(input_text) {
     const numbers = await fetch(`/hello/${userinput}`);
     const num = await numbers.json();
     
+    document.getElementById('span_type').textContent = num.what;
+    document.getElementById('unit').textContent = num.inUnit;
+    document.getElementById('thewhat').classList.add('thewhat');
     var txt = [];
 
-    for (x=0; x<18; x++) {
+    for (x=0; x<num.totalRow+1; x++) {
         txt[x] = num.title[x];
     }
 
@@ -39,7 +43,7 @@ async function datafromweb(input_text) {
         row.insertCell().innerHTML = num.header[k];
     }
     
-    for (i=0; i<18; i++) {
+    for (i=0; i<num.totalRow+1; i++) {
         
         var row = c.insertRow();
 

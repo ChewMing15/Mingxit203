@@ -28,45 +28,63 @@ async function datafunction() {
         const term_response = await get_data.text();
 
         const $ = cheerio.load(term_response);
+        
+        var totalRow = 0;
+        $('.rw-expnded').each((i, element) => {
+            totalRow = i
+            return totalRow
+        });
+
+        //console.log(totalRow);
 
         const title = [];
-        var body = new Array(18);
+        var body = new Array(totalRow+1);
         var header = new Array(4);
+        var what;
+        var inUnit;
+        //console.log('this one ok?')
+        
+        what = $('.Mb\\(10px\\)').children().eq(1).text();
+        inUnit = $('.Mb\\(10px\\)').children().eq(2).text();
 
-        for (j=0; j<18; j++) {
+        //console.log('xxx1' + istatment + '1xxx2' + inUnit + '2xxx')
+
+        for (j=0; j<totalRow + 1; j++) {
             body[j] = new Array(4)
         }
 
         $('.rw-expnded').each((i, element) => {
             const $element = $(element);
-    
+            //console.log(i)
             title[i] = $element.children().children().children().eq(0).text();
 
             for (j=0; j<4; j++) {
                 body[i][j] = $element.children().children().eq(j+1).text();
+                //console.log('or is it here' + i + "   " + j)
             }
 
+            //console.log('still inside' + i)
         });
 
         for (i=0; i<5; i++) {
+            //console.log('failure point' + i)
             header[i] = $('.D\\(tbhg\\)').children().children().eq(i).text();
             //console.log('@' + i + ' header:' + header[i])
         }
 
         let table = {
+            what,
+            inUnit,
+            totalRow,
             title,
             body,
             header
         }
         
-        //console.log('done');
         console.log(table);
-        
         response.json(table);
         
     });
-    
-    //console.log(uer);
 }
 
 
