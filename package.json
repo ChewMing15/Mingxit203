@@ -2,7 +2,7 @@
   "name": "mingxit203",
   "version": "1.0.0",
   "description": "",
-  "main": "scrap.js",
+  "main": "index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
@@ -10,8 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "scrape"
